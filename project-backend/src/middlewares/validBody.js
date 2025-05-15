@@ -7,7 +7,7 @@ export const validBody = (schema) => async (req, res, next) => {
     });
     next();
   } catch (err) {
-    const error = createHttpError(400, 'no valid body', {
+    const error = createHttpError(400, 'No valid body', {
       errors: err.details,
     });
     next(error);

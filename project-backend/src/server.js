@@ -8,6 +8,7 @@ import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 
 import { getEnvVar } from './utils/getEnvVar.js';
+import authRouter from './routers/auth.js';
 
 const port = Number(getEnvVar('PORT', 3000));
 
@@ -32,11 +33,7 @@ export const setupServer = () => {
     });
   });
 
-  app.get('/test', (req, res) => {
-    res.json({
-      message: 'test',
-    });
-  });
+  app.use('/auth', authRouter);
 
   app.use(notFoundHandler);
 
