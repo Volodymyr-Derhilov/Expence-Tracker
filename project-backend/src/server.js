@@ -6,7 +6,8 @@ import cookieParser from 'cookie-parser';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { getEnvVar } from './utils/getEnvVar.js';
-import router from './routers/index.js'; // головний роутер, який вже містить /auth
+import router from './routers/index.js'; 
+import authRouter from './routers/auth.js';
 
 const port = Number(getEnvVar('PORT', 3000));
 
@@ -27,11 +28,14 @@ export const startServer = () => {
   // Основні маршрути (включно з /auth)
   app.use(router);
 
+
   app.get('/', (req, res) => {
     res.json({
       message: 'Welcome to Spendy - Expense Tracker backend',
     });
   });
+  app.use('/auth', authRouter);
+
 
   app.use(notFoundHandler);
   app.use(errorHandler);
