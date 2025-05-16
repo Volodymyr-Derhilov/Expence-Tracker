@@ -1,4 +1,4 @@
-import createHttpError from 'http-errors';
+// import createHttpError from 'http-errors';
 import { randomBytes } from 'node:crypto';
 import { UsersCollection } from '../db/models/user.js';
 import SessionCollection from '../db/models/session.js';
@@ -37,7 +37,7 @@ export const registerUser = async (payload) => {
 export const findSession = (query) => SessionCollection.findOne(query);
 
 export const findUser = (query) => UsersCollection.findOne(query);
-
+// ----
 // export const loginUser = async (payload) => {
 //   const { email, password } = payload;
 //   const user = await findUser({ email });

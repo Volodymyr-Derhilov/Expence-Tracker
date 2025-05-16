@@ -5,4 +5,4 @@ export const getTransactions = (userId) => {
   return Transaction.find({ userId: new mongoose.Types.ObjectId(userId) });
 };
 
-export const addTransaction = (payload) => Transaction.create(payload);
+// export const addTransaction = (payload) => Transaction.create(payload);
